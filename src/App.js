@@ -26,7 +26,7 @@ function App() {
       data-item-id="1"
       data-item-name="Surprise"
       data-item-price="100.00"
-      data-item-url="/"
+      data-item-url="https://what-a-cool-store.netlify.app"
     >
       BUY
     </button>
