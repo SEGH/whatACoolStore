@@ -5,9 +5,8 @@ const API_ENDPOINT = `https://b57t0bjz.apicdn.sanity.io/v2021-03-25/data/query/p
 exports.handler = async (event, context) => {
     return fetch(API_ENDPOINT, { headers: {Accept: "application/json"}})
         .then((response) => response.json())
-        .then((data) => ({
-            statusCode: 200,
-            body: data.request
-        }))
+        .then((data) => {
+            console.log(data)
+        })
         .catch((error) => ({ statusCode: 422, body: String(error)}))
 }
