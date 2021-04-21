@@ -7,10 +7,6 @@ exports.handler = async (event, context) => {
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            return {
-                statusCode: 200,
-                body: data
-            };
         })
         .catch((error) => ({ statusCode: 422, body: String(error) }))
 
