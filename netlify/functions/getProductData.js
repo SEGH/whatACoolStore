@@ -5,13 +5,9 @@ const API_ENDPOINT = `https://b57t0bjz.apicdn.sanity.io/v2021-03-25/data/query/p
 exports.handler = async (event, context) => {
     return fetch(API_ENDPOINT, { headers: { Accept: "application/json" } })
         .then(response => response.json())
-        .then(data => {
-            const productData = data.result.forEach(product => JSON.stringify({ id: product.id, price: product.price, url: API_ENDPOINT }));
-
-            return {
-                statusCode: 200,
-                body: {productData}
-            }
-        })
+        .then(data => ({
+            statusCode: 200,
+            body: data.result
+        }))
 
 }
