@@ -7,7 +7,7 @@ export default function Product({ title, id, price, url}) {
                 data-item-id={id}
                 data-item-name={title}
                 // data-item-url={`https://b57t0bjz.apicdn.sanity.io/v2021-03-25/data/query/production?query=*[_id==${id}]`}
-                data-item-url={`https://b57t0bjz.apicdn.sanity.io/v2021-03-25/data/query/production?query=*[_id=='53b27b6c-e1ee-44fc-bcc6-51e689354ebc']{'id':_id,price,url}&`}
+                data-item-url={`https://what-a-cool-store.netlify.app/.netlify/functions/getProductData`}
                 data-item-price={price}
             >Add to Cart</button>
         </div>
