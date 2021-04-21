@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
         .then(data => ({
             statusCode: 200,
             body: JSON.stringify({ 
-                id: "Hello World",
+                id: data.result[0].id,
                 price: "money",
                 url: "/"
             })
