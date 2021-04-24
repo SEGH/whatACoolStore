@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import sanityClient from '../../client';
 
-
 export default function ProductDetail() {
     const [productData, setProductData] = useState(null);
     const { slug } = useParams();
@@ -18,7 +17,7 @@ export default function ProductDetail() {
     }, [slug]);
 
     if (!productData) return (<main id="productDetail">Loading...</main>)
-    
+
     return (
         <main id="productDetail">
             <section>
