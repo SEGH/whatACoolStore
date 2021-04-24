@@ -8,3 +8,8 @@
     text-decoration: none;
     color: black;
 }
+
+#storefrontPage #productContainer .card {
+    width: 300px;
+    box-shadow: none;
+}
