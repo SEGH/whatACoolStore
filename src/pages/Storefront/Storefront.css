@@ -3,3 +3,8 @@
     width: 100vw;
     justify-content: space-around;
 }
+
+#storefrontPage .productLink {
+    text-decoration: none;
+    color: black;
+}
