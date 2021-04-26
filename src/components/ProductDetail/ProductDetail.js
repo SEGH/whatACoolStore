@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import sanityClient from '../../client';
+import BlockContent from '@sanity/block-content-to-react';
 
 export default function ProductDetail() {
     const [productData, setProductData] = useState(null);
@@ -24,6 +25,7 @@ export default function ProductDetail() {
                 <Link to={"/"}>All Products</Link>
             </section>
             {productData.title}
+            <BlockContent blocks={productData.body.en} />
         </main>
     )
 }
