@@ -10,8 +10,8 @@ function urlFor(source) {
 }
 
 export default function Product({ title, id, price, slug, variants, variantType, mainImage }) {
-    const [selectedVariant, setSelectedVariant] = useState(variants[0])
-    const variantOptions = variants.map(variant => `${variant.title}[+${variant.price - price}]`).join("|")
+    const [selectedVariant, setSelectedVariant] = useState(variants ? variants[0] : null)
+    const variantOptions = variants && variants.map(variant => `${variant.title}[+${variant.price - price}]`).join("|")
 
     const handleSelect = (event) => {
         // console.log(event.target.value)
@@ -23,10 +23,10 @@ export default function Product({ title, id, price, slug, variants, variantType,
         <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]) : urlFor(mainImage)}></CardTitle></Link>}>
 
             <h5>{title}</h5>
-            <div className={variants.length === 0 && "invisible"}>
+            <div className={!variants ? "invisible" : variants && variants.length === 0 ? "invisible" : ""}>
                 <label htmlFor="variants">{variantType}:</label>
                 <select className="browser-default" name="variants" onChange={(event) => handleSelect(event)}>
-                    {variants.length > 0 && variants.map(variant => <option value={variant.title} key={variant._key}>{variant.title}</option>)}
+                    {variants && variants.length > 0 && variants.map(variant => <option value={variant.title} key={variant._key}>{variant.title}</option>)}
                 </select>
             </div>
             <h6>${selectedVariant ? selectedVariant.price : price}</h6>
@@ -35,8 +35,8 @@ export default function Product({ title, id, price, slug, variants, variantType,
                 data-item-name={title}
                 data-item-url={`https://what-a-cool-store.netlify.app/.netlify/functions/getProductData`}
                 data-item-price={price}
-                data-item-custom1-name={variants.length > 0 ? variantType : null}
-                data-item-custom1-options={variants.length > 0 ? variantOptions : null}
+                data-item-custom1-name={variants && variants.length > 0 ? variantType : null}
+                data-item-custom1-options={variants && variants.length > 0 ? variantOptions : null}
                 data-item-custom1-value={selectedVariant && selectedVariant.title}
             >Add to Cart</button>
 
