@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardTitle } from 'react-materialize';
+import sanityClient from '../../client';
+import imageUrlBuilder from '@sanity/image-url';
 
-export default function Product({ title, id, price, slug, variants, variantType }) {
+const builder = imageUrlBuilder(sanityClient);
+function urlFor(source) {
+    return builder.image(source)
+}
+
+export default function Product({ title, id, price, slug, variants, variantType, mainImage }) {
     const [selectedVariant, setSelectedVariant] = useState(variants[0])
     const variantOptions = variants.map(variant => `${variant.title}[+${variant.price - price}]`).join("|")
 
@@ -13,7 +20,7 @@ export default function Product({ title, id, price, slug, variants, variantType 
     }
 
     return (
-        <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image="https://via.placeholder.com/150"></CardTitle></Link>}>
+        <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]) : urlFor(mainImage)}></CardTitle></Link>}>
 
             <h5>{title}</h5>
             <div className={variants.length === 0 && "invisible"}>
