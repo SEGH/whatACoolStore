@@ -16,10 +16,12 @@ export default function Product({ title, id, price, slug, variants, variantType 
         <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image="https://via.placeholder.com/150"></CardTitle></Link>}>
 
             <h5>{title}</h5>
-            <label htmlFor="variants">{variantType}:</label>
-            <select className="browser-default" name="variants" onChange={(event) => handleSelect(event)}>
-                {variants.length > 0 && variants.map(variant => <option value={variant.title} key={variant._key}>{variant.title}</option>)}
-            </select>
+            <div className={variants.length == 0 && "invisible"}>
+                <label htmlFor="variants">{variantType}:</label>
+                <select className="browser-default" name="variants" onChange={(event) => handleSelect(event)}>
+                    {variants.length > 0 && variants.map(variant => <option value={variant.title} key={variant._key}>{variant.title}</option>)}
+                </select>
+            </div>
             <h6>${selectedVariant ? selectedVariant.price : price}</h6>
             <button className="snipcart-add-item"
                 data-item-id={id}
@@ -28,7 +30,7 @@ export default function Product({ title, id, price, slug, variants, variantType 
                 data-item-price={price}
                 data-item-custom1-name="Size"
                 data-item-custom1-options={variantOptions}
-                data-item-custom1-value={selectedVariant.title}
+                data-item-custom1-value={selectedVariant && selectedVariant.title}
             >Add to Cart</button>
 
         </Card>
