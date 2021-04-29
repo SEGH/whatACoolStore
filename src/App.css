@@ -6,3 +6,7 @@
 .navbar {
     background-color: var(--dark-background);
 }
+
+.navbar a {
+    display: flex;
+}
