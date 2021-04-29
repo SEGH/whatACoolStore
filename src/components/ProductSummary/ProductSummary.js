@@ -20,7 +20,7 @@ export default function Product({ title, id, price, slug, variants, variantType,
     }
 
     return (
-        <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(300, 300) : urlFor(mainImage).size(300, 300)}></CardTitle></Link>}>
+        <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(300, 300).url() : urlFor(mainImage).size(300, 300).url()}></CardTitle></Link>}>
 
             <h5>{title}</h5>
             <div className="priceBox">
