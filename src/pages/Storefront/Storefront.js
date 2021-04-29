@@ -21,7 +21,7 @@ export default function Storefront() {
             <section id="productContainer">
                 <Row>
                     {products && products.map(product => {
-                        return <Col key={product._id}><ProductSummary title={product.title} id={product._id} price={product.price} slug={product.slug.current} variants={product.variants} variantType={product.variant_type} mainImage={product.images[0]} /></Col>
+                        return <Col key={product._id}><ProductSummary title={product.title} id={product._id} price={product.price} slug={product.slug.current} variants={product.variants} variantType={product.variant_type} mainImage={product.images[0]} blurb={product.blurb.en} /></Col>
                     })}
                 </Row>
             </section>
