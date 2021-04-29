@@ -9,7 +9,7 @@ function urlFor(source) {
     return builder.image(source)
 }
 
-export default function Product({ title, id, price, slug, variants, variantType, mainImage }) {
+export default function Product({ title, id, price, slug, variants, variantType, mainImage, blurb }) {
     const [selectedVariant, setSelectedVariant] = useState(variants ? variants[0] : null)
     const variantOptions = variants && variants.map(variant => `${variant.title}[+${variant.price - price}]`).join("|")
 
@@ -21,8 +21,10 @@ export default function Product({ title, id, price, slug, variants, variantType,
 
     return (
         <Card header={<Link to={`/${slug}`} className="productLink"><CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(300, 300).url() : urlFor(mainImage).size(300, 300).url()}></CardTitle></Link>}>
-
-            <h5>{title}</h5>
+            <div>
+                <h5>{title}</h5>
+                <p>{blurb}</p>
+            </div>
             <div className="priceBox">
                 <div className={!variants ? "invisible" : variants && variants.length === 0 ? "invisible" : ""}>
                     <label htmlFor="variants">{variantType}:</label>
