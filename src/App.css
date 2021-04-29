@@ -1,3 +1,8 @@
 .invisible {
     visibility: hidden;
 }
+
+/* Header */
+.navbar {
+    background-color: var(--dark-background);
+}
