@@ -13,3 +13,14 @@
     width: 300px;
     box-shadow: none;
 }
+
+#storefrontPage #productContainer .card .card-image {
+    height: 300px;
+}
+
+#storefrontPage #productContainer .card .card-content > div {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
