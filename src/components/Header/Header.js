@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header(){
     return (
-        <Navbar brand={<Link to="/">What A Cool Store</Link>} alignLinks="right">
+        <Navbar brand={<Link to="/">What A Cool Store</Link>} alignLinks="right" className="navbar">
             <Link to="/" className="snipcart-checkout snipcart-summary"><span className="snipcart-total-price">$0.00</span></Link>
         </Navbar>
     )
