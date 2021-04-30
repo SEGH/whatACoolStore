@@ -40,12 +40,49 @@
     justify-content: space-between;
 }
 
+/* Product Detail */
+#productDetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#productDetail > section {
+    width: 100vw;
+    max-width: 1200px;
+    margin: 2em 0;
+}
+
+#productDetail > section .card {
+    box-shadow: none;
+    flex-direction: column;
+}
+
+#productDetail > section .card .card-image {
+    max-width: 100%;
+}
+
+#productDetail > section .card .card-image img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media only screen and (min-width: 601px) {
     #storefrontPage #productContainer {
         justify-content: space-around;
     }
+
     #storefrontPage #productContainer .card {
         margin: 1em 0;
+    }
+
+    #productDetail > section .card {
+        flex-direction: row;
+        margin: 1em;
+    }
+
+    #productDetail > section .card .card-image {
+        max-width: 50%;
     }
 }
 
