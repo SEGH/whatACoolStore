@@ -47,6 +47,14 @@
     align-items: center;
 }
 
+#productDetail > .preloader-wrapper {
+    margin-top: 30%;
+}
+
+#productDetail > .preloader-wrapper > .spinner-layer {
+    border-color: blueviolet;
+}
+
 #productDetail > section {
     width: 100vw;
     max-width: 1200px;

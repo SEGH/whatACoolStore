@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Card, CardTitle, Icon } from 'react-materialize';
+import { Card, CardTitle, Icon, Preloader } from 'react-materialize';
 import PriceBox from '../PriceBox/PriceBox';
 import sanityClient from '../../client';
 import BlockContent from '@sanity/block-content-to-react';
@@ -36,7 +36,7 @@ export default function ProductDetail() {
         setSelectedVariant(selected[0])
     }
 
-    if (!productData) return (<main id="productDetail">Loading...</main>)
+    if (!productData) return ( <main id="productDetail"><Preloader /></main>)
     // console.log(productData)
 
     return (
