@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Card, CardTitle } from 'react-materialize';
+import { Card, CardTitle, Icon } from 'react-materialize';
 import PriceBox from '../PriceBox/PriceBox';
 import sanityClient from '../../client';
 import BlockContent from '@sanity/block-content-to-react';
@@ -42,7 +42,7 @@ export default function ProductDetail() {
     return (
         <main id="productDetail">
             <section>
-                <Link to={"/"}>All Products</Link>
+                <Link to={"/"}><Icon>chevron_left</Icon>All Products</Link>
                 <Card header={<CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(500, 500).url() : urlFor(productData.images[0]).size(500, 500).url()} />} horizontal>
                     <div>
                         <h5>{productData.title}</h5>

@@ -58,6 +58,12 @@
     flex-direction: column;
 }
 
+#productDetail > section > a > i {
+    position: relative;
+    bottom: -6px;
+    left: -5px;
+}
+
 #productDetail > section .card .card-image {
     max-width: 100%;
 }
@@ -76,6 +82,10 @@
         margin: 1em 0;
     }
 
+    #productDetail > section > a {
+        margin-left: 1em;
+    }
+
     #productDetail > section .card {
         flex-direction: row;
         margin: 1em;
@@ -84,6 +94,8 @@
     #productDetail > section .card .card-image {
         max-width: 50%;
     }
+
+
 }
 
 @media only screen and (min-width: 993px) {
