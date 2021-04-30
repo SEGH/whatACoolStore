@@ -34,7 +34,7 @@
 }
 
 #storefrontPage #productContainer .card .card-content > div {
-    height: 300px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,6 +51,10 @@
 
 @media only screen and (min-width: 993px) {
     #storefrontPage #productContainer .card {
-        margin: 1em;
+        margin: 3em 1em;
+    }
+
+    #storefrontPage #productContainer::after {
+        margin: 3em 1em;
     }
 }
