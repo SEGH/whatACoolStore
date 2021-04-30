@@ -22,7 +22,7 @@ export default function ProductDetail() {
         )
             .then(data => {
                 setProductData(data[0])
-                
+
                 if (data[0].variants) {
                     setSelectedVariant(data[0].variants[0])
                 }
@@ -43,15 +43,14 @@ export default function ProductDetail() {
         <main id="productDetail">
             <section>
                 <Link to={"/"}>All Products</Link>
+                <Card header={<CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(500, 500).url() : urlFor(productData.images[0]).size(500, 500).url()} />} horizontal>
+                    <div>
+                        <h5>{productData.title}</h5>
+                        <BlockContent blocks={productData.body.en} />
+                    </div>
+                    <PriceBox variants={productData.variants} id={productData._id} title={productData.title} price={productData.price} variantType={productData.variant_type} selectedVariant={selectedVariant} handleSelect={handleSelect} />
+                </Card>
             </section>
-            <Card header={<CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(500, 500).url() : urlFor(productData.images[0]).size(500, 500).url()} />} horizontal>
-                <div>
-                    <h5>{productData.title}</h5>
-                    <BlockContent blocks={productData.body.en} />
-                </div>
-                <PriceBox variants={productData.variants} id={productData._id} title={productData.title} price={productData.price} variantType={productData.variant_type} selectedVariant={selectedVariant} handleSelect={handleSelect} />
-            </Card>
-
         </main>
     )
 }
