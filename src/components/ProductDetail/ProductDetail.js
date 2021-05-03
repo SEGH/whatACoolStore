@@ -36,7 +36,7 @@ export default function ProductDetail() {
         setSelectedVariant(selected[0])
     }
 
-    if (!productData) return ( <main id="productDetail"><Preloader /></main>)
+    if (!productData) return (<main id="productDetail"><Preloader /></main>)
     // console.log(productData)
 
     return (
@@ -50,6 +50,33 @@ export default function ProductDetail() {
                     </div>
                     <PriceBox variants={productData.variants} id={productData._id} title={productData.title} price={productData.price} variantType={productData.variant_type} selectedVariant={selectedVariant} handleSelect={handleSelect} />
                 </Card>
+
+                <div id="imageNavbar">
+                    <div id="navContainer">
+                        <ul>
+                            {selectedVariant && selectedVariant.images.length > 0 ?
+                                selectedVariant.images.map((image, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <figure>
+                                                <img src={urlFor(image).size(100, 100).url()} />
+                                            </figure>
+                                        </li>
+
+                                    )
+                                })
+                                : productData.images.map((image, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <figure>
+                                                <img src={urlFor(image).size(150, 150).url()} />
+                                            </figure>
+                                        </li>
+                                    )
+                                })}
+                        </ul>
+                    </div>
+                </div>
             </section>
         </main>
     )
