@@ -29,7 +29,7 @@ export default function ProductDetail() {
                     setSelectedVariant(data[0].variants[0])
                 }
 
-                if (data[0].variants && data[0].variants[0].images[0]) {
+                if (data[0].variants && data[0].variants.length > 0 && data[0].variants[0].images && data[0].variants[0].images[0]) {
                     setShowcaseImage(data[0].variants[0].images[0])
                 }
             })
@@ -39,7 +39,9 @@ export default function ProductDetail() {
     const handleSelect = (event) => {
         const selected = productData.variants.filter(variant => variant.title === event.target.value)
         setSelectedVariant(selected[0])
-        setShowcaseImage(selected[0].images[0])
+        if (selected[0].images[0]) {
+            setShowcaseImage(selected[0].images[0])
+        }
     }
 
     if (!productData) return (<main id="productDetail"><Preloader /></main>)
@@ -71,7 +73,10 @@ export default function ProductDetail() {
 
                                     )
                                 })}
-                                {productData.images.map((image, index) => {
+                                {!selectedVariant && productData.images.length === 1 ? ""
+                                : selectedVariant && selectedVariant.images.length === 0 && productData.images.length === 1 ? ""
+                                :
+                                productData.images.map((image, index) => {
                                     return (
                                         <li key={index} onClick={() => setShowcaseImage(productData.images[index])}>
                                             <figure>
