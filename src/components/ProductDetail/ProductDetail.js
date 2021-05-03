@@ -15,6 +15,7 @@ export default function ProductDetail() {
     const [productData, setProductData] = useState(null);
     const { slug } = useParams();
     const [selectedVariant, setSelectedVariant] = useState(null)
+    const [showcaseImage, setShowcaseImage] = useState(null)
 
     useEffect(() => {
         sanityClient.fetch(
@@ -22,11 +23,15 @@ export default function ProductDetail() {
         )
             .then(data => {
                 setProductData(data[0])
+                setShowcaseImage(data[0].images[0])
 
                 if (data[0].variants) {
                     setSelectedVariant(data[0].variants[0])
                 }
 
+                if (data[0].variants && data[0].variants[0].images[0]) {
+                    setShowcaseImage(data[0].variants[0].images[0])
+                }
             })
             .catch(console.error)
     }, [slug]);
@@ -43,7 +48,7 @@ export default function ProductDetail() {
         <main id="productDetail">
             <section>
                 <Link to={"/"}><Icon>chevron_left</Icon>All Products</Link>
-                <Card header={<CardTitle image={selectedVariant && selectedVariant.images[0] ? urlFor(selectedVariant.images[0]).size(500, 500).url() : urlFor(productData.images[0]).size(500, 500).url()} />} horizontal>
+                <Card header={<CardTitle image={urlFor(showcaseImage).size(500, 500).url()} />} horizontal>
                     <div>
                         <h5>{productData.title}</h5>
                         <BlockContent blocks={productData.body.en} />
@@ -57,7 +62,7 @@ export default function ProductDetail() {
                             {selectedVariant && selectedVariant.images.length > 0 ?
                                 selectedVariant.images.map((image, index) => {
                                     return (
-                                        <li key={index}>
+                                        <li key={index} onClick={() => setShowcaseImage(selectedVariant.images[index])}>
                                             <figure>
                                                 <img src={urlFor(image).size(100, 100).url()} />
                                             </figure>
@@ -67,7 +72,7 @@ export default function ProductDetail() {
                                 })
                                 : productData.images.map((image, index) => {
                                     return (
-                                        <li key={index}>
+                                        <li key={index} onClick={() => setShowcaseImage(productData.images[index])}>
                                             <figure>
                                                 <img src={urlFor(image).size(150, 150).url()} />
                                             </figure>
