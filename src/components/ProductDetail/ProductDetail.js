@@ -39,6 +39,7 @@ export default function ProductDetail() {
     const handleSelect = (event) => {
         const selected = productData.variants.filter(variant => variant.title === event.target.value)
         setSelectedVariant(selected[0])
+        setShowcaseImage(selected[0].images[0])
     }
 
     if (!productData) return (<main id="productDetail"><Preloader /></main>)
