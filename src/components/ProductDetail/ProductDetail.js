@@ -59,18 +59,18 @@ export default function ProductDetail() {
                 <div id="imageNavbar">
                     <div id="navContainer">
                         <ul>
-                            {selectedVariant && selectedVariant.images.length > 0 ?
+                            {selectedVariant && selectedVariant.images.length > 0 &&
                                 selectedVariant.images.map((image, index) => {
                                     return (
                                         <li key={index} onClick={() => setShowcaseImage(selectedVariant.images[index])}>
                                             <figure>
-                                                <img src={urlFor(image).size(100, 100).url()} />
+                                                <img src={urlFor(image).size(150, 150).url()} />
                                             </figure>
                                         </li>
 
                                     )
-                                })
-                                : productData.images.map((image, index) => {
+                                })}
+                                {productData.images.map((image, index) => {
                                     return (
                                         <li key={index} onClick={() => setShowcaseImage(productData.images[index])}>
                                             <figure>
