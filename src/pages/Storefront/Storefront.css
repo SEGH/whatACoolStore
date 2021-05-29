@@ -102,6 +102,10 @@
     margin: 0 1px;
 }
 
+#productDetail #navContainer ul li:hover {
+    cursor: pointer;
+}
+
 #productDetail #navContainer ul li figure {
     margin: 0;
     height: 150px;
